@@ -1,0 +1,32 @@
+if(NOT PKG_CONFIG_FOUND)
+    INCLUDE(FindPkgConfig)
+endif()
+PKG_CHECK_MODULES(PC_CUSP cusp)
+
+FIND_PATH(
+    CUSP_INCLUDE_DIRS
+    NAMES cusp/cusp.cuh
+    HINTS $ENV{CUSP_DIR}/include
+        ${PC_CUSP_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    CUSP_LIBRARIES
+    NAMES cusp
+    HINTS $ENV{CUSP_DIR}/lib
+        ${PC_CUSP_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+          @libdir@
+          )
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(CUSP DEFAULT_MSG CUSP_LIBRARIES CUSP_INCLUDE_DIRS)
+MARK_AS_ADVANCED(CUSP_LIBRARIES CUSP_INCLUDE_DIRS)
