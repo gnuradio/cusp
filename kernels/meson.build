@@ -3,7 +3,10 @@
 # SPDX-License-Identifier: Apache-2.0
 
 cusp_cu_files = files([
-    'copy.cu', 
+    'copy.cu',
+    'add.cu',
+    'moving_average.cu',
+    'keep_m_in_n.cu' 
 ])
 
 incdir = ['../include']

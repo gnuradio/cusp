@@ -4,7 +4,11 @@
 
 incdir = ['../include']
 
-qa_srcs = ['qa_copy']
+qa_srcs = ['qa_copy',
+           'qa_moving_average',
+           'qa_keep_m_in_n',
+           'qa_add'
+          ]
 
 foreach qa : qa_srcs
     e = executable(qa, 
