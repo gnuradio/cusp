@@ -24,6 +24,8 @@ protected:
   int _min_block = -1;
   int _min_grid = -1;
 
+  virtual size_t threads_per_item() { return 1; }
+
 public:
   kernel() = default;
   virtual ~kernel() = default;
@@ -44,13 +46,15 @@ public:
       // launch_default_occupancy");
       occupancy_internal();
     }
-    int gridSize = (nitems + _min_block - 1) / _min_block;
+    int gridSize = (nitems * threads_per_item() + _min_block - 1) / _min_block;
     set_block_and_grid(_min_block, gridSize);
     return launch(inputs, outputs, nitems);
   }
 
   virtual cudaError_t occupancy(int *minBlock, int *minGrid) = 0;
-  cudaError_t occupancy_internal() { return occupancy(&_min_block, &_min_grid); }
+  cudaError_t occupancy_internal() {
+    return occupancy(&_min_block, &_min_grid);
+  }
 };
 
 } // namespace cusp

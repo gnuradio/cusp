@@ -2,7 +2,7 @@
 /*
  * Copyright 2021 Josh Morman
  *
- * SPDX-License-Identifier: LGPL-3.0-or-later
+ * SPDX-License-Identifier: Apache-2.0
  *
  */
 
