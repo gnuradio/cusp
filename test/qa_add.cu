@@ -9,7 +9,7 @@
 #include <gtest/gtest.h>
 #include <complex>
 #include <cusp/add.cuh>
-#include <cusp/helper_cuda.h>
+#include <helper_cuda.h>
 
 using namespace cusp;
 
