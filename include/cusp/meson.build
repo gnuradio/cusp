@@ -3,6 +3,7 @@ hdrs = [
     'cusp.cuh',
     'copy.cuh',
     'kernel.cuh',
+    'add.cuh',
     'complex_to_mag_squared.cuh',
     'complex_to_mag.cuh',
     'conjugate.cuh',
