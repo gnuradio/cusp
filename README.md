@@ -8,6 +8,22 @@ Access to signal processing and mathematical routines implemented in Python has 
 
 ## Installation
 
+Generally accomplished in the standard meson/ninja way:
+
+```
+meson setup build
+cd build
+ninja
+ninja install
+```
+
+For Ubuntu 20.04 with CUDA installed via apt (CUDA v10.1), it is necessary to tell meson where to find CUDA
+
+Also, for installing into a newsched prefix, set the `--prefix` and `--libdir`
+```
+CUDA_ROOT=/usr/ meson setup build --buildtype=debugoptimized --prefix=[PREFIX_DIR] -Denable_cuda=true --libdir=lib
+```
+
 ## Usage
 
 ## Future Development
