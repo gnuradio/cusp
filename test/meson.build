@@ -16,6 +16,7 @@ qa_srcs = ['qa_copy',
            'qa_conjugate',
            'qa_divide',
            'qa_multiply',
+           'qa_multiply_const',
           ]
 
 foreach qa : qa_srcs

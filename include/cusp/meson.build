@@ -9,6 +9,7 @@ hdrs = [
     'conjugate.cuh',
     'divide.cuh',
     'multiply.cuh',
+    'multiply_const.cuh',
     'channelizer.cuh',
     'convolve.cuh',
     'deinterleave.cuh',

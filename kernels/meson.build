@@ -13,6 +13,7 @@ cusp_cu_files = files([
     'complex_to_mag_squared.cu',
     'divide.cu',
     'multiply.cu',
+    'multiply_const.cu',
     'keep_m_in_n.cu',
     'channelizer.cu' 
 ])
