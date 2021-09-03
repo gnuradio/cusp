@@ -24,6 +24,11 @@ Also, for installing into a newsched prefix, set the `--prefix` and `--libdir`
 CUDA_ROOT=/usr/ meson setup build --buildtype=debugoptimized --prefix=[PREFIX_DIR] -Denable_cuda=true --libdir=lib
 ```
 
+Also, if CUDA is installed from tar packages, be sure to add the CUDA library to the `LIBRARY_PATH`, e.g. in `.bashrc`:
+```
+export LIBRARY_PATH=/usr/local/cuda-10.2/lib64:$LIBRARY_PATH
+```
+
 ## Usage
 
 ## Future Development
