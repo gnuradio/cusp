@@ -84,12 +84,21 @@ cudaError_t channelizer<std::complex<float>>::launch(
 
   checkCudaErrors(cudaPeekAtLastError());
 
-  // std::cout << "fft with " << _nchans << " / " << N << std::endl;
-  checkCudaErrors(cufftPlan1d(&_plan, _nchans, CUFFT_C2C, N ));
-  checkCudaErrors(cufftSetStream(_plan, stream));
-  checkCudaErrors (cufftExecC2C(_plan, (cufftComplex *) out, (cufftComplex *) out, CUFFT_FORWARD) );
+  cufftHandle plan;
+  if (_plan_cache.count(N) > 0)
+  {
+    plan = _plan_cache[N];
+  }
+  else
+  {
+    checkCudaErrors(cufftPlan1d(&_plan, _nchans, CUFFT_C2C, N ));
+    checkCudaErrors(cufftSetStream(_plan, stream));
+    _plan_cache[N] = _plan;
+    plan = _plan;
+  }
+
+  checkCudaErrors (cufftExecC2C(plan, (cufftComplex *) out, (cufftComplex *) out, CUFFT_FORWARD) );
   _conj_kernel.launch_default_occupancy({out},{out}, N*_nchans);
-  cufftDestroy(_plan);
 
   return cudaPeekAtLastError();
 } 

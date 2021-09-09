@@ -51,7 +51,7 @@ void run_test(const std::vector<T> &data, const std::vector<T> &taps, const size
 
   auto t1 = std::chrono::steady_clock::now();
 
-  int iters = 1000;
+  int iters = 100;
   for (int i=0; i<iters; i++)
     checkCudaErrors(op.launch_default_occupancy({dev_input_data}, {dev_output_data}, N / nchans));
 

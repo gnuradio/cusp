@@ -13,6 +13,8 @@
 #include <cufft.h>
 #include <cusp/conjugate.cuh>
 
+#include <map>
+
 namespace cusp
 {
     template <typename T>
@@ -24,6 +26,8 @@ namespace cusp
         std::vector<T> _taps;
         T *_dev_taps;
         cufftHandle _plan;
+
+        std::map<size_t,cufftHandle> _plan_cache;
 
         cusp::conjugate _conj_kernel;
     public:
