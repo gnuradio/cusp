@@ -15,7 +15,8 @@ cusp_cu_files = files([
     'multiply.cu',
     'multiply_const.cu',
     'keep_m_in_n.cu',
-    'channelizer.cu' 
+    'channelizer.cu',
+    'fft.cu'
 ])
 
 incdir = ['../include']

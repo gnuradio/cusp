@@ -13,5 +13,6 @@ hdrs = [
     'channelizer.cuh',
     'convolve.cuh',
     'deinterleave.cuh',
+    'fft.cuh'
 ]
 install_headers(hdrs, subdir : 'cusp')
