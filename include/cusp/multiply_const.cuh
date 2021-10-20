@@ -12,6 +12,7 @@ namespace cusp
         T _k;
     public:
         multiply_const(T k) : _k(k) {};
+        void set_k(T k) {_k = k;}
         cudaError_t launch(const T *in, T *out, T k, int grid_size, int block_size,
             int N, cudaStream_t stream = 0);
         virtual cudaError_t launch(const std::vector<const void *>& inputs,
