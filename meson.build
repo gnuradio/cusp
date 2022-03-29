@@ -22,27 +22,6 @@ subdir('include/cusp')
 subdir('kernels')
 subdir('test')
 
-prefix = get_option('prefix')
-# Escape spaces
-prefix_parts = prefix.split(' ')
-prefix = '\ '.join(prefix_parts)
-
-conf = configuration_data()
-conf.set('prefix', prefix)
-conf.set('exec_prefix', '${prefix}')
-conf.set('libdir', join_paths('${prefix}',get_option('libdir')))
-conf.set('includedir', join_paths('${prefix}',get_option('includedir')))
-conf.set('LIBVER', '0.0.0')
-
-cmake_conf = configuration_data()
-cmake_conf.set('libdir', join_paths(prefix,get_option('libdir')))
-cmake.configure_package_config_file(
-  name : 'cusp',
-  input : 'cmake/Modules/cuspConfig.cmake.in',
-  install_dir : get_option('prefix') / 'lib' / 'cmake' / 'cusp',
-  configuration : cmake_conf
-)
-
 pkg = import('pkgconfig')
 libs = []     # the library/libraries users need to link against
 h = ['.'] # subdirectories of ${prefix}/${includedir} to add to header path
