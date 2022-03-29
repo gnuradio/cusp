@@ -25,7 +25,7 @@ private:
 public:
     keep_m_in_n(int m, int n, int itemsize = 1, int offset = 0) : _m(m), _n(n), _itemsize(itemsize), _offset(offset) {};
     cudaError_t launch(const T *in, T *out, int m, int n, int itemsize, int offset, int grid_size,
-        int block_size, int N, cudaStream_t stream = 0);
+        int block_size, int M, cudaStream_t stream = 0);
     virtual cudaError_t launch(const std::vector<const void *>& inputs,
         const std::vector<void *>& outputs, size_t nitems) override;
     virtual cudaError_t occupancy(int *minBlock, int *minGrid);

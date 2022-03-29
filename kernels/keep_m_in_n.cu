@@ -42,8 +42,8 @@ __global__ void kernel_keep_m_in_n(const T *in, T *out, int m, int n, int itemsi
 
 template <typename T>
 cudaError_t keep_m_in_n<T>::launch(const T *in, T *out, int m, int n, int itemsize,
-                                   int offset, int M, int grid_size,
-                                   int block_size, cudaStream_t stream) {
+                                   int offset, int grid_size,
+                                   int block_size, int M, cudaStream_t stream) {
   if (stream) {
     kernel_keep_m_in_n<<<grid_size, block_size, 0, stream>>>(in, out, m, n, itemsize,
                                                              offset, M);
