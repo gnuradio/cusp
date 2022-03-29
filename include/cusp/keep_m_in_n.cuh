@@ -20,10 +20,11 @@ class keep_m_in_n : public kernel
 private:
     int _m;
     int _n;
+    int _itemsize;
     int _offset;
 public:
-    keep_m_in_n(int m, int n, int offset = 0) : _m(m), _n(n), _offset(offset) {};
-    cudaError_t launch(const T *in, T *out, int m, int n, int cur_offset, int grid_size,
+    keep_m_in_n(int m, int n, int itemsize = 1, int offset = 0) : _m(m), _n(n), _itemsize(itemsize), _offset(offset) {};
+    cudaError_t launch(const T *in, T *out, int m, int n, int itemsize, int offset, int grid_size,
         int block_size, int N, cudaStream_t stream = 0);
     virtual cudaError_t launch(const std::vector<const void *>& inputs,
         const std::vector<void *>& outputs, size_t nitems) override;

@@ -45,8 +45,8 @@ template <typename T> void run_test(int N, int m, int n) {
   cudaMemcpy(dev_input_data, host_input_data.data(), N * sizeof(T),
              cudaMemcpyHostToDevice);
 
-  cusp::keep_m_in_n<T> op(m, n);
-  op.launch_default_occupancy({dev_input_data}, {dev_output_data}, M);
+  cusp::keep_m_in_n<uint8_t> op(m, n, sizeof(T));
+  op.launch_default_occupancy({dev_input_data}, {dev_output_data}, M*sizeof(T));
 
   cudaDeviceSynchronize();
   cudaMemcpy(host_output_data.data(), dev_output_data, M * sizeof(T),
@@ -87,8 +87,8 @@ template <> void run_test<std::complex<float>>(int N, int m, int n) {
   cudaMemcpy(dev_input_data, host_input_data.data(),
              N * sizeof(std::complex<float>), cudaMemcpyHostToDevice);
 
-  cusp::keep_m_in_n<std::complex<float>> op(m, n);
-  op.launch_default_occupancy({dev_input_data}, {dev_output_data}, M);
+  cusp::keep_m_in_n<uint8_t> op(m, n, sizeof(std::complex<float>));
+  op.launch_default_occupancy({dev_input_data}, {dev_output_data}, M*sizeof(std::complex<float>));
 
   cudaDeviceSynchronize();
   cudaMemcpy(host_output_data.data(), dev_output_data,
