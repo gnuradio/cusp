@@ -115,9 +115,13 @@ cudaError_t keep_m_in_n<std::complex<float>>::occupancy(int *minBlock,
 #define IMPLEMENT_KERNEL(T) template class keep_m_in_n<T>;
 
 IMPLEMENT_KERNEL(int8_t)
+IMPLEMENT_KERNEL(uint8_t)
 IMPLEMENT_KERNEL(int16_t)
+IMPLEMENT_KERNEL(uint16_t)
 IMPLEMENT_KERNEL(int32_t)
+IMPLEMENT_KERNEL(uint32_t)
 IMPLEMENT_KERNEL(int64_t)
+IMPLEMENT_KERNEL(uint64_t)
 IMPLEMENT_KERNEL(float)
 IMPLEMENT_KERNEL(std::complex<float>)
 
