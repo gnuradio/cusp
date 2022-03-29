@@ -8,6 +8,7 @@ hdrs = [
     'complex_to_mag.cuh',
     'conjugate.cuh',
     'divide.cuh',
+    'keep_m_in_n.cuh',
     'multiply.cuh',
     'multiply_const.cuh',
     'channelizer.cuh',
