@@ -57,8 +57,8 @@ template <typename T>
 cudaError_t keep_m_in_n<T>::launch(const std::vector<const void *> &inputs,
                                    const std::vector<void *> &outputs,
                                    size_t nitems) {
-  return launch((const T *)inputs[0], (T *)outputs[0], _m, _n, _itemsize, _offset, nitems,
-                _grid_size, _block_size, _stream);
+  return launch((const T *)inputs[0], (T *)outputs[0], _m, _n, _itemsize, _offset,
+                _grid_size, _block_size, nitems, _stream);
 }
 
 template <typename T>

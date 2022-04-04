@@ -52,6 +52,14 @@ template <typename T> void run_test(int N, int m, int n) {
   cudaMemcpy(host_output_data.data(), dev_output_data, M * sizeof(T),
              cudaMemcpyDeviceToHost);
 
+  EXPECT_EQ(expected_output_data.size(), host_output_data.size());
+  // for (int i=0; i<expected_output_data.size(); i++)
+  // {
+  //   if (host_output_data[i] != expected_output_data[i])
+  //   {
+  //     std::cout << "(" << i << "): " << host_output_data[i] << "!=" << expected_output_data[i] << std::endl;
+  //   }
+  // }
   EXPECT_EQ(expected_output_data, host_output_data);
 }
 
@@ -94,11 +102,13 @@ template <> void run_test<std::complex<float>>(int N, int m, int n) {
   cudaMemcpy(host_output_data.data(), dev_output_data,
              M * sizeof(std::complex<float>), cudaMemcpyDeviceToHost);
 
+  EXPECT_EQ(expected_output_data.size(), host_output_data.size());
   EXPECT_EQ(expected_output_data, host_output_data);
 }
 
 TEST(KeepMInNKernel, Basic) {
   int N = 1024 * 100;
+  // int N = 13*3;
 
   run_test<int32_t>(N, 7, 13);
   run_test<float>(N, 8, 16);
