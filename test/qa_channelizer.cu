@@ -88,7 +88,7 @@ TEST(ChannelizerKernel, Basic) {
 
   std::vector<float> freqs{110., -513., 203., -230, 121};
 
-  size_t nsamps = 1000000;
+  size_t nsamps = 10000;
   // size_t nsamps = 1000;
   std::vector<std::complex<float>> in_data(nsamps);
   float samp_rate = 5000.0;
